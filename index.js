@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const app = express();
 const port = process.env.PORT || 5000;
 const router = require("./routes");
+const search = require("./searchRoute")
 
 const user = "mvc";
 const pass = "2YsQ6TiXhsx0jvaD";
@@ -13,6 +14,12 @@ const pass = "2YsQ6TiXhsx0jvaD";
 app.use(cors());
 app.use(express.json());
 app.use("/user", router);
+app.use("/search",search)
+
+
+app.get("/",(req,res)=> {
+  res.send("hello world ")
+})
 
 mongoose
   .connect(

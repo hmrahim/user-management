@@ -23,6 +23,16 @@ const userSchema = new Schema({
   },
 });
 
+userSchema.index({
+  name:"text",
+  username:"text"
+},{
+  weights:{
+    name:5,
+    username:5
+  }
+})
+
 const User = model("User", userSchema);
 
 module.exports = User;
